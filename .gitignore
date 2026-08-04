@@ -1,0 +1,20 @@
+node_modules/
+.next/
+out/
+dist/
+coverage/
+
+# Every .env variant is secret except the committed template.
+.env*
+!.env.example
+
+.DS_Store
+*.log
+tsconfig.tsbuildinfo
+*.tsbuildinfo
+
+.vercel
+.turbo
+
+.claude/*
+!.claude/skills/

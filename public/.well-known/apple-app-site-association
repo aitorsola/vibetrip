@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["SK4CMEFH7T.com.vibetrip.ios"],
+        "components": [
+          {
+            "/": "/*/shared/*",
+            "comment": "Trip share links — opens the iOS app instead of the web fallback when installed."
+          }
+        ]
+      }
+    ]
+  }
+}

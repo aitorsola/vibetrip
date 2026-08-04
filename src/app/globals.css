@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 248 248 250;
+  --surface: 255 255 255;
+  --surface-hover: 242 242 246;
+  --elevated: 255 255 255;
+  --border: 226 226 232;
+  --border-strong: 208 208 218;
+  --fg: 34 34 34;
+  --muted: 113 113 113;
+  --subtle: 176 176 176;
+  --success: 0 130 90;
+  --warning: 200 80 50;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: 11 13 20;
+  --surface: 17 20 30;
+  --surface-hover: 25 29 43;
+  --elevated: 22 26 38;
+  --border: 38 43 62;
+  --border-strong: 58 65 90;
+  --fg: 235 237 245;
+  --muted: 160 165 185;
+  --subtle: 100 108 135;
+  --success: 70 200 150;
+  --warning: 255 130 100;
+  color-scheme: dark;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--fg));
+  font-family: theme("fontFamily.sans");
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv11";
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+body {
+  min-height: 100vh;
+}
+
+::selection {
+  background: #00ac00;
+  color: white;
+}
+
+/* Inputs — Airbnb-ish: rounded, large touch target, focus ring rose */
+.input {
+  box-sizing: border-box;
+  width: 100%;
+  /* Block intrinsic min-content from forcing overflow when the input lives
+     inside a grid/flex item whose track is narrower than the placeholder. */
+  min-width: 0;
+  max-width: 100%;
+  min-height: 52px;
+  background: rgb(var(--surface));
+  color: rgb(var(--fg));
+  border: 1px solid rgb(var(--border-strong));
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 15px;
+  line-height: 1.4;
+  font-family: inherit;
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.input::placeholder {
+  color: rgb(var(--subtle));
+}
+.input:hover {
+  border-color: rgb(var(--fg) / 0.6);
+}
+.input:focus {
+  border-color: rgb(var(--fg));
+  box-shadow: 0 0 0 1px rgb(var(--fg));
+}
+
+/* Floating-label container */
+.field {
+  position: relative;
+}
+.field > .field-label {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgb(var(--muted));
+  letter-spacing: 0.02em;
+}
+.field > .input {
+  padding-top: 26px;
+  padding-bottom: 8px;
+}
+
+/* Soft scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Disable transitions on theme switch flash */
+.no-transitions * {
+  transition: none !important;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
+}
+
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-in-up 0.45s cubic-bezier(0.2, 0, 0, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Leaflet ships its own light chrome — tooltips, zoom buttons and the
+   attribution bar all hardcode white. Without these the dark map is framed
+   by white boxes and the tooltip text (which uses our fg token) turns
+   invisible on its own background. */
+.dark .leaflet-tooltip,
+.dark .leaflet-popup-content-wrapper,
+.dark .leaflet-popup-tip {
+  background: rgb(var(--elevated));
+  border-color: rgb(var(--border-strong));
+  color: rgb(var(--fg));
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.5);
+}
+
+.dark .leaflet-tooltip-top::before {
+  border-top-color: rgb(var(--elevated));
+}
+.dark .leaflet-tooltip-bottom::before {
+  border-bottom-color: rgb(var(--elevated));
+}
+.dark .leaflet-tooltip-left::before {
+  border-left-color: rgb(var(--elevated));
+}
+.dark .leaflet-tooltip-right::before {
+  border-right-color: rgb(var(--elevated));
+}
+
+.dark .leaflet-bar a,
+.dark .leaflet-control-attribution {
+  background: rgb(var(--surface));
+  color: rgb(var(--muted));
+  border-color: rgb(var(--border));
+}
+
+.dark .leaflet-bar a:hover {
+  background: rgb(var(--surface-hover));
+  color: rgb(var(--fg));
+}
+
+.dark .leaflet-control-attribution a {
+  color: rgb(var(--fg));
+}

@@ -1,5 +1,7 @@
 # vibetrip
 
+![vibetrip — AI trip planner](docs/header.png)
+
 AI-agent trip planner. The user describes destinations, dates and travel companions; the system delivers a day-by-day itinerary with real places, accommodation, an interactive map and a ready-to-use plan — all streamed live, in a couple of minutes.
 
 Sister repos:
